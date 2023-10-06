@@ -13,4 +13,5 @@ import java.util.List;
 public interface OrderedRepository extends CrudRepository<Ordered, Long> {
     List<Ordered> findAllByProduct(Product product);
     List<Ordered> findAllByOrder(Order order);
+    List<Ordered> findAllByStatusStore(boolean status);
 }

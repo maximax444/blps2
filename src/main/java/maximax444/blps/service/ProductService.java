@@ -56,7 +56,7 @@ public class ProductService implements ProductInterface {
 
 	public Product createProduct(ProductDTO productDTO, Customer customer) {
 		Product product = new Product();
-		product.setOwner(customer);
+		product.setOwner(customer.getId());
 		product.setName(productDTO.getName());
 		product.setPrice(productDTO.getPrice());
 		product.setCount(productDTO.getCount());

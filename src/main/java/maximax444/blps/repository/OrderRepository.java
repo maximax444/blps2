@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends CrudRepository<Order, Long> {
 
-	List<Order> findAllByCustomer(Customer customer);
+	List<Order> findAllByCustomer(Long customer);
 }

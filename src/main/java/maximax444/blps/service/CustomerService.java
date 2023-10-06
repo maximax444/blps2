@@ -4,12 +4,10 @@ package maximax444.blps.service;
 import maximax444.blps.entity.Customer;
 import maximax444.blps.entity.Role;
 import maximax444.blps.exceptions.AuthException;
-import maximax444.blps.exceptions.EntityAlreadyExistsException;
 import maximax444.blps.repository.CustomerRepository;
 import maximax444.blps.security.MyResourceNotFoundException;
 import lombok.AllArgsConstructor;
 import maximax444.blps.security.jwt.JwtTokenProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -85,6 +83,19 @@ public class CustomerService implements CustomerInterface {
 	public Customer getUserFromContext() {
 		String userName = SecurityContextHolder.getContext().getAuthentication().getName();
 		return findByName(userName);
+	}
+	@Override
+	public Customer setAdmin(int user_id) {
+		Optional<Customer> us = customerRepository.findById(user_id);
+		if (us.isEmpty()) {
+			throw new MyResourceNotFoundException("Ошибка авторизации");
+		}
+		Customer usGetted = us.get();
+		Role usRole = new Role();
+		usRole.setName("ADMIN");
+		usGetted.setRole(usRole);
+		customerRepository.save(usGetted);
+		return usGetted;
 	}
 //
 //

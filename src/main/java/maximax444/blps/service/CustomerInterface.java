@@ -14,4 +14,5 @@ public interface CustomerInterface {
     String registration(String username, String password);
     List<Customer> findAll();
     Customer getUserFromContext();
+    Customer setAdmin(int user_id);
 }

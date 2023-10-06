@@ -22,7 +22,7 @@ public class CheckoutController {
     @PostMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public Order createOrder(@RequestBody List<ProductDTO> productDTOs) {
 
-
+        System.out.println(customerService.getUserFromContext());
         return orderService.addOrder(productDTOs, customerService.getUserFromContext());
     }
 }

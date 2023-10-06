@@ -18,9 +18,8 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
 
-    @ManyToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+
+    private Long customer;
 
     @Column(name = "status")
     private boolean status;

@@ -17,9 +17,8 @@ public class Product {
 	@Column(name = "product_id")
 	private Long id;
 
-	@ManyToOne(cascade= CascadeType.ALL)
-	@JoinColumn(name = "owner_id")
-	private Customer owner;
+
+	private Long owner;
 
 	@Column(name = "price")
 	private Long price;

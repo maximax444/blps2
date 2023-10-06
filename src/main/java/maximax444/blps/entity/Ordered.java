@@ -21,6 +21,9 @@ public class Ordered {
     @JoinColumn(name = "order_id")
     private Order order;
 
+    @Column(name = "status_store")
+    private boolean statusStore;
+
     @ManyToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "product_id")
     private Product product;

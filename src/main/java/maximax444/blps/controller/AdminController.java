@@ -26,4 +26,8 @@ public class AdminController {
     public Product createProduct(@RequestBody ProductDTO productDTO) {
         return productService.createProduct(productDTO, customerService.getUserFromContext());
     }
+    @PostMapping(value = "/new-admin", produces = "application/json")
+    public Customer createAdmin(@RequestParam int user_id) {
+        return customerService.setAdmin(user_id);
+    }
 }
